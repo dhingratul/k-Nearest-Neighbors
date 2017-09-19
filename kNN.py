@@ -4,16 +4,19 @@
 Created on Tue Sep 19 11:26:33 2017
 
 @author: dhingratul
+Helper file for Nearest Neighbor algorithm
 """
 import pickle
 import numpy as np
 
 
 class NearestNeighbors(object):
+    # Nearest neighbor classifier
     def __init__(self):
         pass
 
     def train(self, X, y):
+        # Learn the training instances
         self.X_train = X
         self.y_train = y
 
@@ -35,6 +38,7 @@ def unpickle(file):
 
 
 def getCIFAR10(direc, filename, batches):
+    # Converts the data in batches to a full training set
     for j in range(1, batches+1):
         file = direc + filename + str(j)
         dic = unpickle(file)
@@ -47,18 +51,3 @@ def getCIFAR10(direc, filename, batches):
             X_train = np.concatenate((X_train, temp_X))
             y_train = np.concatenate((y_train, temp_y))
     return X_train, y_train
-
-
-# Driver
-direc = '/home/dhingratul/Documents/Dataset/cifar-10-batches-py/'
-test_file = 'test_batch'
-filename = 'data_batch_'
-X_train, y_train = getCIFAR10(direc, filename, 5)
-data_test = unpickle(direc + test_file)
-X_test = data_test[b'data']
-y_test = data_test[b'labels']
-# Call NN
-nn = NearestNeighbors()
-nn.train(X_train, y_train)
-Yte_predict = nn.predict(X_test)
-print('accuracy: {}' .format(np.mean(Yte_predict == y_test)))
