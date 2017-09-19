@@ -1,4 +1,5 @@
-## Image Classification with Nearest Neighbor
+# Image Classification with Nearest Neighbor
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 Image classification for CIFAR-10 dataset using a simple Nearest Neighbor
 Algorithm
 
@@ -14,9 +15,6 @@ into ../data/ directory
 # Run 
 1. Modify the directory to point to the dataset
 2. `python run.py`  
-
-#MIT License
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # Credits
 [cs231n](http://cs231n.github.io/classification/)
