@@ -22,11 +22,11 @@ class NearestNeighbors(object):
 
     def predict(self, X_te):
         num = X_te.shape[0]
-        y_pred = np.zeros(num, dtype=self.y_train.dtype)
+        y_pred = np.empty_like(self.y_train)
         for i in range(num):
             distances = np.sum(np.abs(self.X_train - X_te[i, :]), axis=1)
             min_index = np.argmin(distances)
-            y_pred = self.y_train[min_index]
+            y_pred[i] = self.y_train[min_index]
         return y_pred
 
 
