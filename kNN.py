@@ -8,6 +8,7 @@ Helper file for Nearest Neighbor algorithm
 """
 import pickle
 import numpy as np
+from collections import Counter
 
 
 class NearestNeighbors(object):
@@ -27,6 +28,31 @@ class NearestNeighbors(object):
             distances = np.sum(np.abs(self.X_train - X_te[i, :]), axis=1)
             min_index = np.argmin(distances)
             y_pred[i] = self.y_train[min_index]
+        return y_pred
+
+
+class kNearestNeighbors(object):
+    # Nearest neighbor classifier
+    def __init__(self):
+        pass
+
+    def train(self, X, y, k):
+        # Learn the training instances
+        self.X_train = X
+        self.y_train = y
+        self.k = k
+
+    def predict(self, X_te):
+        num = X_te.shape[0]
+        y_pred = np.empty_like(self.y_train)
+
+        for i in range(num):
+            L = []
+            distances = np.sum(np.abs(self.X_train - X_te[i, :]), axis=1)
+            min_indices = np.argsort(distances)
+            for j in range(self.k):
+                L.append(self.y_train[min_indices[j]])
+            y_pred[i] = Counter(L).most_common(1)[0][0]
         return y_pred
 
 
