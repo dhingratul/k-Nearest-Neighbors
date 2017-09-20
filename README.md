@@ -16,7 +16,8 @@ into ../data/ directory
 
 # Run 
 1. Modify the directory to point to the dataset
-2. `python run.py`  
+2. `python run_NN.py`   for Nearest Neighbor
+3. `python run_kNN.py`  for k-Nearest Neighbor
 
 # Credits
 [cs231n](http://cs231n.github.io/classification/)
