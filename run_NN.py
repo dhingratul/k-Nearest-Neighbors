@@ -10,7 +10,7 @@ import numpy as np
 import kNN as kNN
 
 # Driver
-direc = '/home/dhingratul/Documents/Dataset/cifar-10-batches-py/'
+direc = '../data/'
 test_file = 'test_batch'
 filename = 'data_batch_'
 X_train, y_train = kNN.getCIFAR10(direc, filename, 5)
